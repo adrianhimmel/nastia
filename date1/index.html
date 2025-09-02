@@ -36,6 +36,80 @@
             font-size: 100px;
             letter-spacing: 8px;
         }
+
+        .activities {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            margin: 5rem 0 3rem 0;
+        }
+
+        .activity-card {
+            width: 340px;
+            height: 220px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .activity-card:hover {
+            transform: scale(1.04) rotate(-1deg);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.45);
+        }
+
+        .activity-cover {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #222 60%, #006fa1 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #fff;
+            letter-spacing: 0.2em;
+            z-index: 2;
+            transition: opacity 0.7s cubic-bezier(.77, 0, .18, 1);
+        }
+
+        .activity-card.revealed .activity-cover {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .activity-content {
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            transition: opacity 0.7s cubic-bezier(.77, 0, .18, 1), transform 0.7s cubic-bezier(.77, 0, .18, 1);
+            color: #fff;
+            padding: 2.5rem 2rem 2rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .activity-card.revealed .activity-content {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .activity-content h2 {
+            margin: 0 0 1rem 0;
+            font-size: 2rem;
+            letter-spacing: 0.1em;
+        }
+
+        .activity-content p {
+            margin: 0;
+            font-size: 1.1rem;
+            opacity: 0.85;
+        }
     </style>
 </head>
 
@@ -55,30 +129,84 @@
                 <animate attributeName="startOffset" from="0%" to="-100%" begin="0s" dur="25s" repeatCount="indefinite">
                 </animate>
                 Hallo Nastia,
-                Willkommen zur Date-Night
+                Willkommen zur Date-Night 1
                 ... Я тебя люблю
                 Hallo Nastia,
-                Willkommen zur Date-Night
+                Willkommen zur Date-Night 1
                 ... Я тебя люблю
                 Hallo Nastia,
-                Willkommen zur Date-Night
+                Willkommen zur Date-Night 1
+                ... Я тебя люблю
+                Hallo Nastia,
+                Willkommen zur Date-Night 1
+                ... Я тебя люблю
+                Hallo Nastia,
+                Willkommen zur Date-Night 1
+                ... Я тебя люблю
+                Hallo Nastia,
+                Willkommen zur Date-Night 1
                 ... Я тебя люблю
             </textPath>
             <textPath xlink:href="#text-path" startOffset="0" text-anchor="middle" alignment-baseline="central">
                 <animate attributeName="startOffset" from="0%" to="-100%" begin="0s" dur="25s" repeatCount="indefinite">
                 </animate>
                 Hallo Nastia,
-                Willkommen zur Date-Night
+                Willkommen zur Date-Night 1
                 ... Я тебя люблю
                 Hallo Nastia,
-                Willkommen zur Date-Night
+                Willkommen zur Date-Night 1
                 ... Я тебя люблю
                 Hallo Nastia,
-                Willkommen zur Date-Night
+                Willkommen zur Date-Night 1
+                ... Я тебя люблю
+                Hallo Nastia,
+                Willkommen zur Date-Night 1
+                ... Я тебя люблю
+                Hallo Nastia,
+                Willkommen zur Date-Night 1
+                ... Я тебя люблю
+                Hallo Nastia,
+                Willkommen zur Date-Night 1
                 ... Я тебя люблю
             </textPath>
         </text>
     </svg>
+
+    <div class="activities">
+        <div class="activity-card" onclick="revealActivity(this)">
+            <div class="activity-cover">
+                <span>?</span>
+            </div>
+            <div class="activity-content">
+                <h2>Aktivität 1</h2>
+                <p>Hier kommt die Beschreibung der ersten Aktivität hin.</p>
+            </div>
+        </div>
+        <div class="activity-card" onclick="revealActivity(this)">
+            <div class="activity-cover">
+                <span>?</span>
+            </div>
+            <div class="activity-content">
+                <h2>Aktivität 2</h2>
+                <p>Hier kommt die Beschreibung der zweiten Aktivität hin.</p>
+            </div>
+        </div>
+        <div class="activity-card" onclick="revealActivity(this)">
+            <div class="activity-cover">
+                <span>?</span>
+            </div>
+            <div class="activity-content">
+                <h2>Aktivität 3</h2>
+                <p>Hier kommt die Beschreibung der dritten Aktivität hin.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function revealActivity(card) {
+            card.classList.add('revealed');
+        }
+    </script>
 </body>
 
 </html>
