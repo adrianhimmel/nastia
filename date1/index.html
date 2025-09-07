@@ -110,6 +110,92 @@
             font-size: 1.1rem;
             opacity: 0.85;
         }
+
+        /* Extra CSS für große Karten */
+        .activity-card--large {
+            min-height: 700px;
+            height: auto;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.75);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #181c24;
+            color: #fff;
+            border-radius: 1.5rem;
+            padding: 2.5rem 2.5rem 2rem 2.5rem;
+            max-width: 1200px;
+            width: 95vw;
+            max-height: 95vh;
+            overflow: auto;
+            box-shadow: 0 8px 40px 0 rgba(31, 38, 135, 0.55);
+            position: relative;
+            animation: modalIn 0.3s cubic-bezier(.77, 0, .18, 1);
+        }
+
+        .modal-content h2 {
+            font-size: 2.5rem;
+        }
+
+        .modal-content p {
+            font-size: 1.3rem;
+        }
+
+        .modal-content .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 1.5rem;
+            max-height: 70vh;
+            overflow: auto;
+        }
+
+        .modal-content iframe {
+            width: 420px;
+            height: 236px;
+            border-radius: 1rem;
+        }
+
+        @keyframes modalIn {
+            from {
+                transform: scale(0.95) translateY(40px);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 10;
+        }
     </style>
 </head>
 
@@ -173,13 +259,16 @@
     </svg>
 
     <div class="activities">
-        <div class="activity-card" onclick="revealActivity(this)">
+        <div class="activity-card" onclick="openGamenightModal()">
             <div class="activity-cover">
                 <span>?</span>
             </div>
             <div class="activity-content">
-                <h2>Aktivität 1</h2>
-                <p>Hier kommt die Beschreibung der ersten Aktivität hin.</p>
+                <h2>Gamenight</h2>
+                <p><br>
+                    <a href="https://store.steampowered.com/about/" target="_blank"
+                        style="color:#00bfff;text-decoration:underline;font-weight:bold;">Steam Download</a>
+                </p>
             </div>
         </div>
         <div class="activity-card" onclick="revealActivity(this)">
@@ -187,8 +276,13 @@
                 <span>?</span>
             </div>
             <div class="activity-content">
-                <h2>Aktivität 2</h2>
-                <p>Hier kommt die Beschreibung der zweiten Aktivität hin.</p>
+                <h2>Lets go :)</h2>
+                <p><br>
+                    <a href="https://kapopo.de/" target="_blank"
+                        style="color:#00bfff;text-decoration:underline;font-weight:bold;">Kapopo</a><br>
+                    <a href="https://www.crazygames.com/" target="_blank"
+                        style="color:#00bfff;text-decoration:underline;font-weight:bold;">CrazyGames</a>
+                </p>
             </div>
         </div>
         <div class="activity-card" onclick="revealActivity(this)">
@@ -196,8 +290,49 @@
                 <span>?</span>
             </div>
             <div class="activity-content">
-                <h2>Aktivität 3</h2>
-                <p>Hier kommt die Beschreibung der dritten Aktivität hin.</p>
+                <h2>Hehe</h2>
+                <p>Gaaaammmmeess</p>
+            </div>
+        </div>
+        <div class="activity-card" onclick="revealActivity(this)">
+            <div class="activity-cover">
+                <span>?</span>
+            </div>
+            <div class="activity-content">
+                <h2>Movietime</h2>
+                <p>Und schlafen</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal für Gamenight -->
+    <div id="gamenight-modal" class="modal-overlay" onclick="closeGamenightModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeGamenightModal(event)">&times;</button>
+            <h2>Gamenight</h2>
+            <p><br>
+                <a href="https://store.steampowered.com/about/" target="_blank"
+                    style="color:#00bfff;text-decoration:underline;font-weight:bold;">Steam Download</a>
+            </p>
+            <div class="video-grid">
+                <iframe src="https://www.youtube.com/embed/_NksLatldL4" title="YouTube video" frameborder="0"
+                    allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/DO1U9nyjUqs" title="YouTube video" frameborder="0"
+                    allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/iPD2hTflr5k" title="YouTube video" frameborder="0"
+                    allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/aMwwpIT6czo" title="YouTube video" frameborder="0"
+                    allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/yzYnX68LMS0" title="YouTube video" frameborder="0"
+                    allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/wz2mM6ooEIc" title="YouTube video" frameborder="0"
+                    allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/LXRapTAKDLQ" title="YouTube video" frameborder="0"
+                    allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/GAWHzGNcTEw" title="YouTube video" frameborder="0"
+                    allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/UzowO9v_-oc" title="YouTube video" frameborder="0"
+                    allowfullscreen></iframe>
             </div>
         </div>
     </div>
@@ -205,6 +340,15 @@
     <script>
         function revealActivity(card) {
             card.classList.add('revealed');
+        }
+
+        function openGamenightModal() {
+            document.getElementById('gamenight-modal').classList.add('active');
+        }
+
+        function closeGamenightModal(event) {
+            event.stopPropagation();
+            document.getElementById('gamenight-modal').classList.remove('active');
         }
     </script>
 </body>
